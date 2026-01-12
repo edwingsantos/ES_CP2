@@ -37,17 +37,17 @@ def goal_reach():
 #test,variable = check(variable)
 while True:
     print("Welcome to your financial calculator")
-    choice= input("Enter the number so select an option \n " 
+    choice= int(input("Enter the number so select an option \n " 
     "1. Savings Time Calculator \n" 
     "2. Compound Interest Calculator \n" 
     "3. Budget Allocator \n"
     "4. Sale Price Calculato \n"
-    "5. Tip Calculator\n")
-    if choice.isdigit == True:
-        if choice == 1:
-            goal_reach()
-        elif choice == 2:
-            print("hi")
+    "5. Tip Calculator\n"))
+
+    if choice == 1:
+        goal_reach()
+    elif choice == 2:
+        print("hi")
     else:
         print(";alksd ")
         continue
