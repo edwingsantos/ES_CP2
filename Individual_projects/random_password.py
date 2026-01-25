@@ -26,9 +26,57 @@ def special_chact():
 
 #make a funtion called generate, where the user choses the options
 def generate():
-    input("what would you like to do")
+    lenght = input(int("How long does the password need to be: "))
+    lower_case = input("Does the password need lowercase letters (Y/N):").upper()
+    uper_case = ("Does the password need uppercase letters (Y/N): ").upper()
+    numbers = input("Does the password need numbers letters (Y/N): ").upper()
+    special_characte = input("Does the password need special characters letters (Y/N): ").upper()
+
+    pool = []
+
+    if lower_case == "Y":
+        pool += lower()
+    elif lower_case == "N":
+        
+    elif uper_case == "Y":
+        pool += upper()
+    elif numbers == "Y":
+        pool += nums()
+    if special_characte == "Y":
+        pool += special_chact()
+
+    if not pool:
+        print("You must choose at least one option.")
+        return
+
+    print("\nPossible Passwords:\n")
+
+    for _ in range(4):
+        password = ""
+        for _ in range(length):
+            password += random.choice(pool)
+        print(password)
 
 
+# main menu
+def main():
+    while True:
+        choice = input(
+            "\nType the number for the action you would like to perform\n"
+            "1. Generate Passwords\n"
+            "2. Exit\n"
+        )
+
+        if choice == "1":
+            generate()
+        elif choice == "2":
+            print("You have decided to exit.")
+            break
+        else:
+            print("Invalid choice.")
+
+
+main()
 #make a funtion for the main menu
 def main():
     #make a while loop
