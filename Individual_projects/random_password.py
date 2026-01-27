@@ -23,70 +23,80 @@ def special_chact():
     #return string for special digits 
     return list(string.punctuation)
 
-
-#make a funtion called generate, where the user choses the options
-def generate():
-    lenght = input(int("How long does the password need to be: "))
-    lower_case = input("Does the password need lowercase letters (Y/N):").upper()
-    uper_case = ("Does the password need uppercase letters (Y/N): ").upper()
-    numbers = input("Does the password need numbers letters (Y/N): ").upper()
-    special_characte = input("Does the password need special characters letters (Y/N): ").upper()
-
-    pool = []
-
-    if lower_case == "Y":
-        pool += lower()
-    elif lower_case == "N":
-        
-    elif uper_case == "Y":
-        pool += upper()
-    elif numbers == "Y":
-        pool += nums()
-    if special_characte == "Y":
-        pool += special_chact()
-
-    if not pool:
-        print("You must choose at least one option.")
-        return
-
-    print("\nPossible Passwords:\n")
-
-    for _ in range(4):
-        password = ""
-        for _ in range(length):
-            password += random.choice(pool)
-        print(password)
-
-
-# main menu
-def main():
+#make a funtion for check 
+def check(choice):
+    #make a while loop, make answer equals input what the user says 
     while True:
-        choice = input(
-            "\nType the number for the action you would like to perform\n"
-            "1. Generate Passwords\n"
-            "2. Exit\n"
-        )
+        answer = input(choice).strip().upper()
+        #if the answer is yes return true
+        if answer == "Y":
+            return True
+        #if the answer equals no return false
+        elif answer == "N":
+            return False
+        #else print to select an actuel option
+        else:
+            print("please select an actuel option")
 
+#make a funtion called generate 
+def generate():
+    #Make a while loop
+    while True:
+        #make lenght equal an integer input, asking how long the password is going to be
+        length = input("How long does the password need to be: ")
+        #if lenght is digit, break else print to select a number
+        if length.isdigit():
+            length = int(length)  # convert to integer for later use
+            break
+        else:
+            print("Select another option that is a number")
+            continue
+
+    #make the different options to choose equals check with the quiestion 
+    lower_case = check("Does the password need lowercase letters (Y/N): ")
+    upper_case = check("Does the password need uppercase letters (Y/N): ")
+    numbers = check("Does the password need numbers (Y/N): ")
+    special_character = check("Does the password need special characters (Y/N): ")
+    
+    #make a empty library called requirements
+    requirements = []
+    #if the quiestion equals yes, add it to requiremnets according to the quiestion
+    if lower_case:
+        requirements += lower()
+    if upper_case:
+        requirements += upper()
+    if numbers:
+        requirements += nums()
+    if special_character:
+        requirements += special_chact()
+    #if there is nothing is requirements print that you have to put things to create, then return
+    if not requirements:
+        print("you must have a requirement")
+        return 
+
+    print("\nPossible Passwords:")
+    #make a loop 4 times, for i in range
+    for i in range(4):
+        #make password empty and do another loop, but now in range lenght
+        password = ""
+        for i in range(length):
+            #make password add random choice from requrements. Then print the password
+            password += random.choice(requirements)
+        print(password)
+#make the funtion for the main meny
+def main():
+    #make a while loop and make choice input what they want to do
+    while True:
+        choice = input("\nType the number for the action you would like to perform\n""1. Generate Passwords\n""2. Exit\n")
+        #if the choice is 1, call generate
         if choice == "1":
             generate()
+        #elif choice is 2 pritn that you have decided to exit, break
         elif choice == "2":
             print("You have decided to exit.")
             break
+        #else print to put something taht is 
         else:
-            print("Invalid choice.")
-
-
+            print("choose 1 or 2")
+#call main
 main()
-#make a funtion for the main menu
-def main():
-    #make a while loop
-    while True:
-        #make choice intup where they want to go, generate pass. or exit
-        choice = input("\n Type the number for the action you would like to perform\n1. Generate Passwords\n2. Exit")
-        #if choice equals one call generate
-        if choice == 1:
-            generate()
-        #elif print that they decide to exit and break
-        elif choice ==2:
-            print("you have decided to exit")
-            break 
