@@ -1,8 +1,20 @@
-alex
-james
-charles
-levi
-levi
-levi 
-i love levi
-not ryan 
+username,Red
+I wrote on my file
+this is more on my fileusername,Red
+I wrote on my file
+this is more on my fileusername,Red
+username,color
+aUser,pink
+yo,hotpink
+someoneelse,red
+me,blue
+username,color
+aUser,pink
+yo,hotpink
+someoneelse,red
+me,blue
+username,color
+aUser,pink
+yo,hotpink
+someoneelse,red
+me,blue
